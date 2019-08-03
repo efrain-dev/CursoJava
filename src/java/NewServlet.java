@@ -27,6 +27,11 @@ public class NewServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        int numero1 = Integer.parseInt(request.getParameter("primerNumero"));
+        int numero2 = Integer.parseInt(request.getParameter("segundoNumero"));
+        
+        Calculadora calculadora = new Calculadora();
+        int resultado = calculadora.sumar(numero1,numero2);
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -36,6 +41,7 @@ public class NewServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Primer servlet de PrograII </h1>");
+            out.println("<h1>EL Resultado de la suma es "+resultado+" </h1>");
             out.println("</body>");
             out.println("</html>");
         }
